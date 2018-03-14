@@ -5,8 +5,10 @@
 
 from api.user import User
 import json
+from utils.logutil import LogUtil
 
 user = User()
+logger = LogUtil()
 
 
 def test_get_single_user():
@@ -14,4 +16,4 @@ def test_get_single_user():
     code = res.status_code
     data = json.loads(res.content)
     # print(json.loads(res.content))
-    print(code)
+    logger.info(code)
