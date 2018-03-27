@@ -6,11 +6,6 @@
 from utils.httputil import *
 
 
-class User(object):
-
-    def __init__(self):
-        pass
-
-    def get_single_user(self):
-        path = "/users"
-        return get(path)
+def get_single_user():
+    path = "/users"
+    return get(path)
