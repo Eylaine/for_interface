@@ -17,8 +17,3 @@ def get(url, **kwargs):
 
 def post(url, **kwargs):
     return request_session.post(url=URL + url, headers=headers, **kwargs)
-
-
-if __name__ == '__main__':
-    res = get(URL)
-    print(json.loads(res.content))

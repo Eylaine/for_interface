@@ -3,17 +3,15 @@
 # Author  : Eylaine
 # File    : test_user.py
 
-from api.user import User
-import json
-from utils.logutil import LogUtil
-
-user = User()
-logger = LogUtil()
+from api.user import *
+from utils.logutil import *
 
 
-def test_get_single_user():
-    res = user.get_single_user()
-    code = res.status_code
-    data = json.loads(res.content)
-    # print(json.loads(res.content))
-    logger.info(code)
+class TestUser(object):
+
+    def test_get_single_user(self):
+        res = get_single_user()
+        code = res.status_code
+        data = res.json()
+        # print(json.loads(res.content))
+        info(code)
