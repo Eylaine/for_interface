@@ -13,5 +13,4 @@ class TestUser(object):
         res = get_single_user()
         code = res.status_code
         data = res.json()
-        # print(json.loads(res.content))
         info(code)
