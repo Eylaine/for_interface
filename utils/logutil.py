@@ -17,21 +17,11 @@ class Singleton(object):
 
 class Log(Singleton):
 
-    def __init__(self):
+    @staticmethod
+    def getlogger():
         logging.config.fileConfig("config/logger.ini")
-        self.logger = logging.getLogger("root")
-
-    def debug(self, msg):
-        self.logger.debug(msg=msg)
-
-    def info(self, msg):
-        self.logger.info(msg=msg)
-
-    def error(self, msg):
-        self.logger.error(msg=msg)
-
-    def warning(self, msg):
-        self.logger.warning(msg=msg)
+        logger = logging.getLogger("root")
+        return logger
 
 
-logger = Log()
+logger = Log.getlogger()

@@ -8,6 +8,6 @@ from utils.logutil import logger
 
 
 def get_single_user():
-    logger.info("开始调用api层接口")
+    logger.info("开始调用api层接口===========================")
     path = "/users"
     return httputil.get(path)
