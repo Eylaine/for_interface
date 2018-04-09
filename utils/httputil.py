@@ -4,16 +4,22 @@
 # File    : httputil.py
 
 import requests
-import json
-
-URL = "https://api.github.com"
-headers = {"Authorization": "token 8dd125eefeb55c67163ad20eb19568669f340b3d"}
-request_session = requests.Session()
+from utils.logutil import Singleton, Log
+from utils.confutil import config
 
 
-def get(url, **kwargs):
-    return request_session.get(url=URL + url, headers=headers, **kwargs)
+class HttpUtil(Singleton):
+    logger = Log()
 
+    def __init__(self):
+        self.request_session = requests.Session()
+        self.url = config.getproperty("GITHUB", "url")
+        self.headers = {"Authorization": config.getproperty("GITHUB", "token")}
 
-def post(url, **kwargs):
-    return request_session.post(url=URL + url, headers=headers, **kwargs)
+    def get(self, path, **kwargs):
+        self.logger.debug("发送get请求")
+        return self.request_session.get(url=self.url + path, headers=self.headers, **kwargs)
+
+    def post(self, path, **kwargs):
+        self.logger.info("发送post请求")
+        return self.request_session.post(url=self.url + path, headers=self.headers, **kwargs)

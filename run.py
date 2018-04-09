@@ -6,13 +6,5 @@
 
 import pytest
 
-
-class GlobalConfig(object):
-
-    URL = "https://api.github.com"
-    print(locals())
-
-
 if __name__ == '__main__':
-    aa = GlobalConfig()
     pytest.main()

@@ -3,9 +3,14 @@
 # Author  : Eylaine
 # File    : test_user.py
 
-from utils.httputil import *
+from utils.httputil import HttpUtil
+from utils.logutil import Log
+
+logger = Log()
+httputil = HttpUtil()
 
 
 def get_single_user():
+    logger.info("开始调用api层接口")
     path = "/users"
-    return get(path)
+    return httputil.get(path)
