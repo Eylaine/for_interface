@@ -3,11 +3,8 @@
 # Author  : Eylaine
 # File    : test_user.py
 
-from utils.httputil import HttpUtil
-from utils.logutil import Log
-
-logger = Log()
-httputil = HttpUtil()
+from utils.httputil import httputil
+from utils.logutil import logger
 
 
 def get_single_user():

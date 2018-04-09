@@ -16,6 +16,7 @@ class Singleton(object):
 
 
 class Log(Singleton):
+
     def __init__(self):
         logging.config.fileConfig("config/logger.ini")
         self.logger = logging.getLogger("root")

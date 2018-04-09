@@ -3,10 +3,8 @@
 # Author  : Eylaine
 # File    : fileutil.py
 
-from logutil import Singleton
 
-
-class FileUtil(Singleton):
+class FileUtil(object):
 
     def __init__(self):
         pass
