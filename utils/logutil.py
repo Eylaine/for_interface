@@ -20,8 +20,8 @@ class Log(Singleton):
     @staticmethod
     def getlogger():
         logging.config.fileConfig("config/logger.ini")
-        logger = logging.getLogger("root")
-        return logger
+        log = logging.getLogger("root")
+        return log
 
 
 logger = Log.getlogger()

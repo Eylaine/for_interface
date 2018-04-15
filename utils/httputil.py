@@ -14,8 +14,8 @@ class HttpUtil(object):
 
     def __init__(self):
         self.request_session = requests.Session()
-        self.url = self.config.getproperty("GITHUB", "url")
-        self.headers = {"Authorization": self.config.getproperty("GITHUB", "token")}
+        self.url = self.config.getproperty("github", "url")
+        self.headers = {"Authorization": self.config.getproperty("github", "token")}
 
     def get(self, path, **kwargs):
         logger.info("发送get请求")
