@@ -1,4 +1,5 @@
-# coding=utf-8
-# Time    : 2018/3/13 22:11
-# Author  : Eylaine
-# File    : __init__.py.py
+# !/usr/bin/python
+# _*_ coding: utf-8 _*_
+
+# @Time    : 2018/4/11
+# @Author  : zhonglin.zhang
