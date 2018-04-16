@@ -1,4 +1,3 @@
 {
-  "testcase/test_user.py::TestUser": true,
   "testcase/test_user.py::TestUser::test_get_single_user": true
 }
