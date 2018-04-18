@@ -16,7 +16,11 @@ class HttpUtil(object):
     def __init__(self):
         self.request_session = requests.Session()
         self.url = self.config.getproperty("github", "url")
+        if self.url == "":
+            logger.error(u"配置文件读取失败：url")
         self.headers = {"Authorization": self.config.getproperty("github", "token")}
+        if self.headers == "":
+            logger.error(u"配置文件读取失败：token")
 
     def get(self, path, params=None, **kwargs):
         logger.info("发送get请求")
