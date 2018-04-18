@@ -5,16 +5,15 @@
 
 from utils.logutil import logger
 from configparser import ConfigParser
+from common import ROOTPATH
 
 
-class ConfUtil(object):
+config = ConfigParser()
+logger.info("读取配置文件config.ini")
+config.read(ROOTPATH + "/config/config.ini")
 
-    def __init__(self):
-        self.config = ConfigParser()
-        logger.info("读取配置文件config.ini")
-        self.config.read("config/config.ini")
 
-    def getproperty(self, section, key):
-        logger.info("读取配置：%s %s" % (section, key))
-        return self.config.get(section, key)
+def getproperty(section, key):
+    logger.info("读取配置：%s %s" % (section, key))
+    return config.get(section, key)
 

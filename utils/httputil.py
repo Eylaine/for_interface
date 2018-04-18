@@ -5,26 +5,20 @@
 
 import requests
 from utils.logutil import logger
-from utils.confutil import ConfUtil
+from utils.confutil import getproperty
 import json
 
 
-class HttpUtil(object):
-
-    config = ConfUtil()
-
-    def __init__(self):
-        self.request_session = requests.Session()
-        self.url = self.config.getproperty("github", "url")
-        self.headers = {"Authorization": self.config.getproperty("github", "token")}
-
-    def get(self, path, params=None, **kwargs):
-        logger.info("发送get请求")
-        return self.request_session.get(url=self.url + path, params=params, **kwargs)
-
-    def post(self, path, data=None, **kwargs):
-        logger.info("发送post请求")
-        return self.request_session.post(url=self.url + path, data=json.dumps(data), **kwargs)
+request_session = requests.Session()
+url = getproperty("github", "url")
+headers = {"Authorization": getproperty("github", "token")}
 
 
-httputil = HttpUtil()
+def get(path, params=None, header=None):
+    logger.info("发送get请求")
+    return request_session.get(url=url+path, params=params, headers=header)
+
+
+def post(path, data=None, header=None):
+    logger.info("发送post请求")
+    return request_session.post(url=url+path, data=json.dumps(data), headers=header)

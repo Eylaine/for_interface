@@ -23,4 +23,3 @@ class TestUser(unittest.TestCase):
             self.fail("状态码不正确")
             # pass
         data = res.json()
-        logger.info(data)

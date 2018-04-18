@@ -3,8 +3,13 @@
 # Author  : Eylaine
 # File    : fileutil.py
 
+from common import ROOTPATH
+import json
 
-class FileUtil(object):
 
-    def __init__(self):
-        pass
+def read_json(filename):
+
+    with open(ROOTPATH + "/data/" + filename) as jf:
+        data = json.load(jf)
+
+    return data
