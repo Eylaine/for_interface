@@ -22,3 +22,8 @@ if __name__ == '__main__':
             resp = get(path=path, params=params)
             code = resp.status_code
             data = json.dumps(resp.content)
+
+        if method is "POST":
+            resp = post(path=path, data=data)
+            code = resp.status_code
+            data = json.dumps(resp.content)
