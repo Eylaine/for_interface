@@ -17,3 +17,4 @@ def getproperty(section, key):
     logger.info("读取配置：%s %s" % (section, key))
     return config.get(section, key)
 
+
