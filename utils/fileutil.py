@@ -13,3 +13,9 @@ def read_json(filename):
         data = json.load(jf)
 
     return data
+
+
+if __name__ == '__main__':
+    case = read_json("testcase.json")
+    for each in case:
+        print(each)
