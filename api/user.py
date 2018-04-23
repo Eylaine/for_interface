@@ -10,6 +10,6 @@ import allure
 
 @allure.step(u"api层")
 def get_single_user():
-    logger.info("开始调用api层接口===========")
-    path = "/users"
+    logger.info(u"开始调用api层接口===========")
+    path = '/users'
     return get(path)

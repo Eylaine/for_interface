@@ -16,7 +16,7 @@ class TestUser(unittest.TestCase):
 
     @allure.story(u"get_single_user")
     def test_get_single_user(self):
-        res = get_single_user()()
+        res = get_single_user()
         code = res.status_code
 
         if code != 200:

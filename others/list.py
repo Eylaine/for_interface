@@ -30,5 +30,21 @@ print(list)
 list.pop()
 print("pop：", end="")
 print(list)
-list.pop(1)
+a = list.pop(1)
+print(a)
 print(list)
+
+list.remove("info")
+print("remove：", end="")
+print(list)
+
+list.reverse()
+print("reverse：", end="")
+print(list)
+
+list.sort()
+print("sort：", end="")
+print(list)
+
+b = 1, 2, 3
+print(b.__len__())
