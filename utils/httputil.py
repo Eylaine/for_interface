@@ -22,3 +22,11 @@ def get(path, params=None, header=None):
 def post(path, data=None, header=None):
     logger.info("发送post请求")
     return request_session.post(url=url+path, data=json.dumps(data), headers=header)
+
+
+def put(path, data=None, **kwargs):
+    return request_session.put(url=url+path, data=json.dumps(data), **kwargs)
+
+
+def delete(path, data=None, **kwargs):
+    return request_session.delete(url=url+path, data=json.dumps(data), **kwargs)
