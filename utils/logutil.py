@@ -3,13 +3,13 @@
 # Author  : Eylaine
 # File    : logutil.py
 
-import logging.config
+import logging
 from common import ROOTPATH
 
 # 指定logger输出格式
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s")
 # 日志输出到文件
-file_handler = logging.FileHandler(ROOTPATH + "/output/logs.log")
+file_handler = logging.FileHandler(ROOTPATH + "/output/logs.log", encoding="utf-8")
 # 指定日志输出格式
 file_handler.setFormatter(formatter)
 # 获取logger实例，参数为空则返回root logger
