@@ -5,6 +5,13 @@
 # @Author  : zhonglin.zhang
 
 import pytest
+import sys
+
+from settins import domain
 
 if __name__ == '__main__':
-    pytest.main()
+    args = sys.argv
+    env = args[1]  # 测试环境变量
+    domain.set_env(env)
+    pytest_arg = args[2:]
+    pytest.main(pytest_arg)
