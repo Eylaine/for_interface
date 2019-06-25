@@ -72,7 +72,7 @@ class Report:
 if __name__ == '__main__':
     # mail_infoo = {"to":"zhangzhonglin@aikucun.com","cc":"","subject":"接口自动化测试报告",
     #               "result":{"start_time":"aaaa","duration":"100","total_num":"12","pass_rate":"90",
-    #                         "report_url":"http://172.19.4.63:8080/job/api.auto/50/allure/"}}
+    #                         "report_url":"http://host:port/job/api.auto/50/allure/"}}
     now = datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")
     mail_infoo = dict()
     mail_infoo['subject'] = '接口自动化测试报告' + now
