@@ -1,2 +1,5 @@
 pytest
 requests
+pyyaml
+jsonpath
+openpyxl

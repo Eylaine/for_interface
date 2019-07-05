@@ -7,7 +7,7 @@ from datetime import datetime
 
 from utils.fileutils import IniFile
 from utils.jenkins import Jenkins
-from utils.mail.mymail import Mail
+from utils.mail import Mail
 
 
 if __name__ == '__main__':

@@ -1,16 +1,16 @@
 # coding=utf-8
 # Time   : 2019/6/13 10:27
 # Author : zhonglin.zhang
-# File   : excelutil.py
+# File   : excel.py
 
 from openpyxl import Workbook, load_workbook
-from common import ROOTPATH
+from settins import ROOT_PATH
 
 
 class ExcelRead:
 
     def __init__(self, file_name):
-        self.file_name = ROOTPATH + file_name
+        self.file_name = ROOT_PATH + file_name
         self.work_book = load_workbook(self.file_name)
         self.sheet_name = 'Sheet1'
         self.sheet = self.work_book[self.sheet_name]
