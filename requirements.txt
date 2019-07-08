@@ -5,4 +5,5 @@ jinja2
 pymysql
 pyyaml
 configparser
+jsonpath
 openpyxl

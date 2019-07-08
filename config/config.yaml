@@ -1,0 +1,5 @@
+alpha:
+  url: https://api.test.com
+
+prod:
+  url: https://api.com

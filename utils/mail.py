@@ -1,7 +1,7 @@
 # coding=utf-8
 # Time   : 2019/6/17 16:11
 # Author : zhonglin.zhang
-# File   : mymail.py
+# File   : mail.py
 
 import smtplib
 from email.mime.text import MIMEText

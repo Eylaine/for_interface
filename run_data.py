@@ -4,12 +4,14 @@
 # @Time    : 2018/4/18
 # @Author  : zhonglin.zhang
 
-from utils.fileutil import read_json
-from utils.httputil import get, post
+from utils.http import get, post
 import json
 
+from settins import ROOT_PATH
+
 if __name__ == '__main__':
-    data = read_json("testcase.json")
+    with open(ROOT_PATH + "/data/testcase.json") as j:
+        data = json.loads(j.read())
 
     for each in data:
         path = each["path"]

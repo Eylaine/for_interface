@@ -3,11 +3,9 @@
 # Author : zhonglin.zhang
 # File   : settins.py
 
-from utils.fileutils import IniFile
+import os
 
-"""
-单例模式设计，保持环境变量
-"""
+ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 
 class Singleton:
@@ -19,14 +17,17 @@ class Singleton:
         return cls._instance
 
 
-class Env(Singleton):
+class Environment(Singleton):
+    """
+    单例模式设计，保持环境变量
+    """
 
-    def __init__(self, env='alpha'):
-        # 默认alpha环境
-        self.env = env
+    ENV = "alpha"
+    INI_PATH = ROOT_PATH + "/config/config.ini"
+    YAML_PATH = ROOT_PATH + "/config/config.yaml"
 
     def set_env(self, env):
-        self.env = env
+        self.ENV = env
 
 
-domain = Env()
+ENV = Environment()
