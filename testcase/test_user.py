@@ -5,12 +5,11 @@
 
 from api.user import *
 from utils.logutil import logger
-import unittest
 import allure
 
 
 @allure.feature(u"测试用例执行")
-class TestUser(unittest.TestCase):
+class TestUser:
 
     logger.info(u"===开始执行测试用例===")
 

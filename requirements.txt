@@ -1,2 +1,8 @@
 pytest
 requests
+allure-pytest
+jinja2
+pymysql
+pyyaml
+configparser
+openpyxl

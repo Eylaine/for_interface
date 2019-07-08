@@ -4,9 +4,11 @@
 # File   : __init__.py
 
 from configparser import ConfigParser
+from configparser import NoOptionError, NoSectionError
 import yaml
 import allure
 from common import ROOTPATH
+from utils.logutil import logger
 
 """
 基本文件类型的读写：txt， ini等
@@ -22,9 +24,17 @@ class IniFile:
     def __init__(self):
         self.file_path = ROOTPATH + INIPATH
 
-    def get_value(self, section, key):
+    def get_value(self, section, option):
         config.read(self.file_path, encoding="utf-8")
-        return config.get(section=section, option=key)
+        try:
+            value = config.get(section=section, option=option)
+            if value is "":
+                logger.error(u"未获取到配置，请检查配置项")
+            return value
+        except NoSectionError:
+            logger.error(u"请检查section是否正确：" + section)
+        except NoOptionError:
+            logger.error(u"请检查option是否正确：" + option)
 
 
 class YamlFile:

@@ -5,13 +5,26 @@
     <title>接口自动化测试报告</title>
     <style>
        tr{height: 20px; width: 100px; text-align: right;}
+        .div-root{
+            margin-left: 750px;
+            margin-top: 200px;
+            border: 2px solid skyblue;
+            width: 400px;
+            text-align: center;
+        }
+        .div-first{
+            display: inline;
+            margin: 10px;
+        }
     </style>
+<!--    <script src="./vue.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body>
 
 <div style="margin-top: 150px; margin-left: 250px">
 <table style="border: 2px solid black;">
-    <tr style=""><td style="width: 150px"><img src="cid:icon" alt="icon" style=""></td><td style="width: 150px; text-align: left">S2b2C测试组</td></tr>
+    <tr style=""><td style="width: 150px"><img src="cid:icon" alt="icon" style=""></td><td style="width: 150px; text-align: left">测试组</td></tr>
     <tr style=""><th colspan="2" style="width: 300px; height: 50px; text-align: center; font-size: 20px">接口自动化测试报告<hr></th></tr>
     <tr><td>开始时间：</td><td style="width: 200px; text-align: left">{{result['start_time']}}</td></tr>
     <tr><td>耗时：</td><td style="width: 200px; text-align: left">{{result['duration']}}</td></tr>
@@ -20,6 +33,33 @@
     <tr><td>测试报告：</td><td style="width: 200px; text-align: left"><a href="{{result['report_url']}}">查看报告</a></td></tr>
 </table>
 </div>
+
+<div id="root" class="div-root">
+    <div id="icon" class="div-first">
+        <img src="cid:icon" alt="icon">
+    </div>
+    <div id="group" class="div-first">
+        前台研发部
+    </div>
+    <div id="title" style="font-size: 24px; margin: 10px">
+       <strong style="text-decoration: underline">接口自动化测试报告</strong>
+    </div>
+    <div id="summary">
+<!--        {{result}}-->
+    </div>
+    <div id="detail" v-for="(item, index) in {{detail_info}}" :key="index"></div>
+</div>
+
+
+<script>
+    new Vue({
+        el: "#detail",
+        delimiters: ["[[", "]]"],
+        data: {
+            result: "{{data}}"
+        }
+    })
+</script>
 
 </body>
 </html>
