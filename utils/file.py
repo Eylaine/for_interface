@@ -50,7 +50,7 @@ def get_yaml_value(key_path, file_path=None):
     if file_path is None:
         with open(ENV.YAML_PATH, mode='r+', encoding='utf-8') as yml:
             """环境区分，所以json path不用带环境的路径"""
-            data = yaml.load(yml, Loader=yaml.Loader)[ENV.DOMAIN]
+            data = yaml.load(yml, Loader=yaml.Loader)[ENV.ENV]
         return jsonpath(data, key_path)[0]
     else:
         with open(file_path, mode='r+', encoding='utf-8') as yml:
