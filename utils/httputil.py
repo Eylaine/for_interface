@@ -1,7 +1,7 @@
 # coding=utf-8
 # Time    : 2018/3/13 21:46
 # Author  : Eylaine
-# File    : http.py
+# File    : httputil.py
 
 import requests
 from utils import log

@@ -4,7 +4,7 @@
 # @Time    : 2018/4/18
 # @Author  : zhonglin.zhang
 
-from utils.http import get, post
+from utils.httputil import get, post
 import json
 
 from settins import ROOT_PATH

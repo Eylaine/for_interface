@@ -1,7 +1,7 @@
 # coding=utf-8
 # Time   : 2019/7/5 15:45
 # Author : zhonglin.zhang
-# File   : file.py
+# File   : fileutil.py
 
 import allure
 from configparser import ConfigParser, NoSectionError, NoOptionError
@@ -9,7 +9,7 @@ import yaml
 from jsonpath import jsonpath
 
 from settins import ENV
-from .log import log
+from .logutil import log
 
 
 @allure.step(u"获取ini文件配置")

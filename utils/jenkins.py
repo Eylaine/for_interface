@@ -6,8 +6,8 @@
 import re
 from datetime import datetime
 
-from utils.http import *
-from utils.file import get_ini_value
+from utils.httputil import *
+from utils.fileutil import get_ini_value
 
 
 class Jenkins:

@@ -1,7 +1,7 @@
 # coding=utf-8
 # Time    : 2018/3/13 21:46
 # Author  : Eylaine
-# File    : log.py
+# File    : logutil.py
 
 import logging
 from logging import config
@@ -32,4 +32,4 @@ class Logger:
         return logger
 
 
-log = Logger()
+log = Logger().get_logger()
