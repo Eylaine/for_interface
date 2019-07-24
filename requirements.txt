@@ -7,3 +7,5 @@ pyyaml
 configparser
 jsonpath
 openpyxl
+jsonschema
+python-jenkins

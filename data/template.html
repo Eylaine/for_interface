@@ -4,62 +4,81 @@
     <meta charset="UTF-8">
     <title>接口自动化测试报告</title>
     <style>
-       tr{height: 20px; width: 100px; text-align: right;}
-        .div-root{
-            margin-left: 750px;
+        .div-box{
             margin-top: 200px;
+            margin-left: 500px;
             border: 2px solid skyblue;
-            width: 400px;
-            text-align: center;
+            width: 350px;
         }
-        .div-first{
-            display: inline;
-            margin: 10px;
+        .table-summary{
+            margin: 10px 50px;
+            border: dot-dash;
+            font-size: 16px;
+        }
+        .table-detail{
+            margin: 10px 25px;
+            border-collapse: collapse;
+        }
+        .tr-detail{
+            text-align: center;
+            height: 40px;
+        }
+        progress{
+            width: 120px;
+            height: 5px;
+            color: dodgerblue;
+        }
+        th{
+            background: lightgrey;
         }
     </style>
-<!--    <script src="./vue.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body>
 
-<div style="margin-top: 150px; margin-left: 250px">
-<table style="border: 2px solid black;">
-    <tr style=""><td style="width: 150px"><img src="cid:icon" alt="icon" style=""></td><td style="width: 150px; text-align: left">测试组</td></tr>
-    <tr style=""><th colspan="2" style="width: 300px; height: 50px; text-align: center; font-size: 20px">接口自动化测试报告<hr></th></tr>
-    <tr><td>开始时间：</td><td style="width: 200px; text-align: left">{{result['start_time']}}</td></tr>
-    <tr><td>耗时：</td><td style="width: 200px; text-align: left">{{result['duration']}}</td></tr>
-    <tr><td>用例数：</td><td style="width: 200px; text-align: left">{{result['total_num']}}</td></tr>
-    <tr><td>通过率：</td><td style="width: 200px; text-align: left">{{result['pass_rate']}}</td></tr>
-    <tr><td>测试报告：</td><td style="width: 200px; text-align: left"><a href="{{result['report_url']}}">查看报告</a></td></tr>
-</table>
+<div id="box" class="div-box">
+    <div id="title">
+        <div style="display: inline; margin-left: 50px">
+            <img src="cid:icon" alt="icon">
+        </div>
+        <div style="display: inline; margin-left: 10px;">
+            <a style="font-size: 20px;">xxxx测试组</a>
+        </div>
+        <div style="margin: 10px 50px; font-size: 26px">
+            <strong style="text-decoration: underline">接口自动化测试报告</strong>
+        </div>
+    </div>
+    <table class="table-summary">
+        <tr>
+            <td style="text-align: center">开始时间：</td><td>{{mail_info["result"]['start_time']}}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center">耗时：</td><td>{{mail_info["result"]['duration']}}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center">用例数：</td><td>{{mail_info["result"]['total_num']}}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center">通过率：</td><td>{{mail_info["result"]['pass_rate']}}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center">测试报告：</td><td><a href="{{mail_info['result']['report_url']}}"><u>查看报告</u></a></td>
+        </tr>
+    </table>
+    <hr style="margin: 10px">
+    <table id="Detail" class="table-detail">
+        <tr style="height: 30px; text-align: center">
+            <th style="width: 25px">ID</th><th style="width: 70px">Module</th><th style="width: 50px">Detail</th><th style="width: 140px;">Passed Rate</th>
+        </tr>
+        <tr><td colspan="4" style="height: 10px"></td></tr>
+        {% for item in mail_info['detail'] %}
+        <tr class="tr-detail">
+            <td>{{loop.index}}</td>
+            <td>{{item.module}}</td>
+            <td>{{item.passed}}/{{item.total}}</td>
+            <td><progress max="{{item.total}}" value="{{item.passed}}"></progress><br>{{item.rate}}%</td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
-
-<div id="root" class="div-root">
-    <div id="icon" class="div-first">
-        <img src="cid:icon" alt="icon">
-    </div>
-    <div id="group" class="div-first">
-        前台研发部
-    </div>
-    <div id="title" style="font-size: 24px; margin: 10px">
-       <strong style="text-decoration: underline">接口自动化测试报告</strong>
-    </div>
-    <div id="summary">
-<!--        {{result}}-->
-    </div>
-    <div id="detail" v-for="(item, index) in {{detail_info}}" :key="index"></div>
-</div>
-
-
-<script>
-    new Vue({
-        el: "#detail",
-        delimiters: ["[[", "]]"],
-        data: {
-            result: "{{data}}"
-        }
-    })
-</script>
-
 </body>
 </html>

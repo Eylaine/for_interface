@@ -10,7 +10,7 @@ from email.mime.multipart import MIMEMultipart
 from jinja2 import Environment, FileSystemLoader
 from datetime import datetime
 
-from utils.fileutils import IniFile
+from utils import IniFile
 from utils.jenkins import Jenkins
 from common import ROOTPATH
 

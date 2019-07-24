@@ -4,5 +4,6 @@
 # @Author  : zhonglin.zhang
 
 from utils.fileutil import get_yaml_value
+from .user import login
 
 DOMAIN = get_yaml_value("$.url")

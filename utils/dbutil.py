@@ -48,8 +48,14 @@ class DbUtil:
         cursor.execute(sql)
         return cursor.fetchall()
 
-
-if __name__ == '__main__':
-    db_ = DbUtil("localhost", 3306, "root", "Eylaine@1989", "test")
-    result_ = db_.query("select * from demo")
-    print(result_["id"])
+    @allure.step("执行sql语句")
+    def update(self, sql):
+        """
+        执行更新操作
+        :param sql:
+        :return:
+        """
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        conn.commit()
