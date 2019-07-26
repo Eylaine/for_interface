@@ -8,19 +8,17 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from jinja2 import Environment, FileSystemLoader
-from datetime import datetime
 
-from utils import IniFile
-from utils.jenkins import Jenkins
-from common import ROOTPATH
+from utils import get_ini_value
+from settins import ROOT_PATH
 
 
 class Mail:
 
     def __init__(self, mail_info):
         self.mail_info = mail_info
-        self.username = IniFile().get_value('EMAIL', 'from')
-        self.password = IniFile().get_value('EMAIL', 'password')
+        self.username = get_ini_value('EMAIL', 'from')
+        self.password = get_ini_value('EMAIL', 'password')
         self.server = self.get_server()
         self.message = self.get_content(self.mail_info['result'])
         self.server.login(self.username, self.password)
@@ -46,7 +44,7 @@ class Mail:
         return temp_server
 
     def get_content(self, result):
-        env = Environment(loader=FileSystemLoader(ROOTPATH + '/data'))
+        env = Environment(loader=FileSystemLoader(ROOT_PATH + '/data'))
         template = env.get_template('template.html')
         content = template.render(result=result)
         return content
@@ -55,7 +53,7 @@ class Mail:
         # with open(ROOTPATH + '/data/100x50.png', 'rb') as img:
         #     img_data = img.read()
 
-        ff = open(ROOTPATH + '/data/100x50.png', 'rb')
+        ff = open(ROOT_PATH + '/data/100x50.png', 'rb')
         img = MIMEImage(ff.read())
         ff.close()
         img.add_header('Content-ID', 'icon')
@@ -67,18 +65,3 @@ class Report:
 
     def __init__(self):
         pass
-
-
-if __name__ == '__main__':
-    # mail_infoo = {"to":"zhangzhonglin@aikucun.com","cc":"","subject":"接口自动化测试报告",
-    #               "result":{"start_time":"aaaa","duration":"100","total_num":"12","pass_rate":"90",
-    #                         "report_url":"http://host:port/job/api.auto/50/allure/"}}
-    now = datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")
-    mail_infoo = dict()
-    mail_infoo['subject'] = '接口自动化测试报告' + now
-    mail_infoo['to'] = IniFile().get_value('EMAIL', 'to')
-    mail_infoo['from'] = IniFile().get_value('EMAIL', 'from')
-    mail_infoo['cc'] = IniFile().get_value('EMAIL', 'cc')
-    mail_infoo['result'] = Jenkins().get_result_info()
-    ml = Mail(mail_infoo)
-    ml.send_html_email()

@@ -9,10 +9,18 @@ from api import login
 
 
 def get_data_list():
+    """
+    读取数据文件，获取测试数据
+    :return:
+    """
     pass
 
 
 def get_user_list():
+    """
+    获取账号配置数据
+    :return:
+    """
     pass
 
 
