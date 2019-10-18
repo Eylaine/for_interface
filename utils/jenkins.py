@@ -67,7 +67,7 @@ def get_detail_list():
     """
     result = list()
     from settins import ROOT_PATH
-    suites_path = ROOT_PATH + "/allure-report/data/suites.json"
+    suites_path = ROOT_PATH + "/output/report/html/data/suites.json"
     with open(suites_path, "r") as suite:
         # suites
         root = json.loads(suite.read())["children"]

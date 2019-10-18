@@ -7,7 +7,7 @@ from jsonpath import jsonpath
 from jsonschema import Draft7Validator
 import json
 
-from utils import log
+from utils.logutil import logger
 from settins import ROOT_PATH
 
 
@@ -21,7 +21,7 @@ class AssertUtil:
         if self.code is 200:
             assert True
         else:
-            log.error(self.content)
+            logger.error(self.content)
             assert False
 
     def assert_json_schema(self, schema_file):
@@ -39,8 +39,8 @@ class AssertUtil:
                     json_path = json_path + "." + each
                 elif isinstance(each, int):
                     json_path = json_path + "[" + str(each) + "]"
-            log.error("json path: " + json_path)
-            log.error("error info: " + error.message)
+            logger.error("json path: " + json_path)
+            logger.error("error info: " + error.message)
 
         assert flag
 
@@ -49,6 +49,6 @@ class AssertUtil:
             data = jsonpath(self.content, key)
 
             if data is False:
-                log.error(u"未获取到json path对应的值：" + key)
+                logger.error(u"未获取到json path对应的值：" + key)
                 assert False
             assert data == json_str[key]

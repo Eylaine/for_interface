@@ -9,7 +9,7 @@ import yaml
 from jsonpath import jsonpath
 
 from settins import ENV
-from .logutil import log
+from .logutil import logger
 
 
 @allure.step(u"获取ini文件配置")
@@ -31,12 +31,12 @@ def get_ini_value(section, option, file_path=None):
     try:
         value = config.get(section, option)
         if value == "":
-            log.error(u"未获取到配置，请检查配置项")
+            logger.error(u"未获取到配置，请检查配置项")
         return value
     except NoSectionError:
-        log.error(u"请检查section是否正确：" + section)
+        logger.error(u"请检查section是否正确：" + section)
     except NoOptionError:
-        log.error(u"请检查option是否正确：" + option)
+        logger.error(u"请检查option是否正确：" + option)
 
 
 @allure.step(u"获取yaml文件配置")

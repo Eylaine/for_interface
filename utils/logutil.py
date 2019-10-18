@@ -4,32 +4,63 @@
 # File    : logutil.py
 
 import logging
-from logging import config
+import logging.config
 from settins import ROOT_PATH
 
 
-def singleton(cls, *args, **kwargs):
+def log_config():
+    config = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "root": {"handlers": ["console", "file"], "level": "INFO", "propagate": False},
+        # "loggers": {
+        #     "console": {
+        #
+        #     },
+        #     "file": {
+        #
+        #     }
+        # },
+        "formatters": {
+            "simple": {
+                "format": "[%(levelname)s] %(filename)s: %(lineno)d - %(message)s"
+            },
+            "complex": {
+                "format": "[%(levelname)s] %(asctime)s - %(filename)s:%(lineno)d - %(message)s"
+            }
+        },
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "simple",
+                "level": "INFO"
+            },
+            "file": {
+                "class": "logging.handlers.RotatingFileHandler",
+                "formatter": "complex",
+                "level": "INFO",
+                "filename": f"{ROOT_PATH}/output/log/logs.log",
+                "mode": "w+",
+                "encoding": "utf8"
+            }
+        }
+    }
 
-    instance = {}
-
-    def _instance():
-        if cls not in instance:
-            instance[cls] = cls(*args, **kwargs)
-        return instance[cls]
-
-    return _instance
+    logging.config.dictConfig(config)
 
 
-@singleton
-class Logger:
-
-    def __init__(self):
-        self.file_path = ROOT_PATH + "/config/logger.ini"
-
-    def get_logger(self):
-        logging.config.fileConfig(self.file_path)
-        logger = logging.getLogger("root")
-        return logger
+def get_logger():
+    log_config()
+    return logging.getLogger("root")
 
 
-log = Logger().get_logger()
+logger = get_logger()
+
+
+def record_log(func):
+
+    def wrapper(*args, **kwargs):
+        logger.info("")
+        return func(*args, **kwargs)
+
+    return wrapper
